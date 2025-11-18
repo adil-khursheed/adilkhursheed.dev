@@ -6,8 +6,8 @@ import ThemeToggle from "./theme-toggle";
 
 const navItems = [
   {
-    label: "About",
-    href: "/about",
+    label: "Projects",
+    href: "/projects",
   },
   {
     label: "Blog",
@@ -21,14 +21,15 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 max-w-4xl w-full mx-auto">
+    <header className="fixed inset-x-0 top-0 z-50 mx-auto w-full max-w-4xl">
       <div
         style={{
           maxWidth: "56rem",
           width: "92%",
         }}
-        className="max-w-4xl w-full mx-auto flex items-center justify-between rounded-full bg-background/50 backdrop-blur-sm p-3">
-        <Avatar className="size-10">
+        className="bg-background/50 max-w-8xl mx-auto flex w-full items-center justify-between rounded-full p-3 backdrop-blur-sm"
+      >
+        <Avatar className="md:size-10">
           <AvatarImage
             src={"/adil-khursheed.jpg"}
             alt="Adil Khursheed"

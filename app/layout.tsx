@@ -30,13 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Providers>
           <Navbar />
-          <main className="relative max-w-4xl w-full mx-auto min-h-screen px-4 md:px-8 pt-10 md:pt-20">
-            <div className="absolute top-0 left-0 h-full w-4 md:w-8 border-x [--pattern-fg:var(--color-border)] border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed"></div>
-            <div className="absolute top-0 right-0 h-full w-4 md:w-8 border-x [--pattern-fg:var(--color-border)] border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed"></div>
-            {children}
+          <main className="min-h-screen max-w-screen overflow-x-hidden">
+            <div className="relative mx-auto min-h-screen px-4 pt-10 md:max-w-4xl md:px-8 md:pt-20 *:[[id]]:scroll-mt-20">
+              <div className="bg-border/50 absolute top-0 left-0 h-full w-4 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-border)] md:w-8"></div>
+              {children}
+              <div className="bg-border/50 absolute top-0 right-0 h-full w-4 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-border)] md:w-8"></div>
+            </div>
           </main>
         </Providers>
       </body>
