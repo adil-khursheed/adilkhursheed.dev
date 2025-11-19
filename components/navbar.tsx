@@ -21,11 +21,11 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 mx-auto w-full max-w-4xl">
+    <header className="fixed inset-x-0 top-0 z-50 mx-auto w-full max-w-6xl">
       <div
         style={{
-          maxWidth: "56rem",
-          width: "92%",
+          maxWidth: "72rem",
+          width: "93%",
         }}
         className="bg-background/50 max-w-8xl mx-auto flex w-full items-center justify-between rounded-full p-3 backdrop-blur-sm"
       >
