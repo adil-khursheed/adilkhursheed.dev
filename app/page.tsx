@@ -17,8 +17,8 @@ export default function Home() {
 
       <div className="line-before line-after relative">
         <h1 className="relative z-10 px-2 text-2xl tracking-tighter text-balance max-lg:font-medium max-sm:px-4 sm:text-5xl lg:text-6xl xl:text-8xl">
-          Hi, I'm <span className="text-sky-500 dark:text-sky-400">Adil</span> —
-          A Full Stack Web Developer.
+          Hi, I'm <span className="text-primary">Adil</span> — A Full Stack Web
+          Developer.
         </h1>
       </div>
 
@@ -42,7 +42,7 @@ export default function Home() {
               "Express",
               "MongoDB",
             ]}
-            mainClassName="px-2 sm:px-2 md:px-3 bg-sky-500 dark:bg-sky-400 overflow-hidden py-0.5 justify-center rounded-lg inline-flex w-[120px] text-lg font-medium"
+            mainClassName="px-2 sm:px-2 md:px-3 bg-primary overflow-hidden py-0.5 justify-center rounded-lg inline-flex w-[120px] text-lg font-medium"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
