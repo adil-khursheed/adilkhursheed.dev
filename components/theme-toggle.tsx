@@ -8,8 +8,9 @@ import React, {
   useSyncExternalStore,
 } from "react";
 import { Button } from "./ui/button";
-import { Moon, SunIcon } from "lucide-react";
 import { flushSync } from "react-dom";
+import { Moon02Icon, SunIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 const emptySubscribe = () => () => {};
 
@@ -72,9 +73,9 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
     >
       {theme === "dark" ? (
-        <SunIcon className="size-4" />
+        <HugeiconsIcon icon={SunIcon} className="size-4" />
       ) : (
-        <Moon className="size-4" />
+        <HugeiconsIcon icon={Moon02Icon} className="size-4" />
       )}
 
       <span className="sr-only">Toggle Theme</span>

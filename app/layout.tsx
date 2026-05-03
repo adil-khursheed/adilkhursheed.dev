@@ -5,7 +5,7 @@ import Providers from "@/components/providers";
 import Navbar from "@/components/navbar";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const fontSans = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 
 const fontMono = IBM_Plex_Mono({
   variable: "--font-mono",
@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
-      <body className={`${inter.variable} ${fontMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${fontSans.variable} ${fontMono.variable} antialiased`}>
         <Providers>
           <Navbar />
 
