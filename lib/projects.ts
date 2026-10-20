@@ -1,5 +1,7 @@
 import { supabasePublic } from "@/lib/supabase/public";
 
+export type ProjectType = "personal" | "freelance";
+
 export type Project = {
   id: string;
   slug: string;
@@ -12,10 +14,11 @@ export type Project = {
   featured: boolean;
   sort_order: number;
   year: number | null;
+  type: ProjectType;
 };
 
 const columns =
-  "id, slug, title, summary, tech_stack, image_path, repo_url, live_url, featured, sort_order, year";
+  "id, slug, title, summary, tech_stack, image_path, repo_url, live_url, featured, sort_order, year, type";
 
 function normalise(row: Project): Project {
   return {

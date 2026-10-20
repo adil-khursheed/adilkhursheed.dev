@@ -257,6 +257,18 @@ A full-bleed hairline over a compact row: mono copyright on one side, social lin
 ### Social Links
 Icon links (GitHub, LinkedIn, Instagram, X) rendered as 2rem ghost targets with a Mist hover. An optional labelled variant prints the platform name in lowercase mono next to each icon, used in About and the footer.
 
+### Studio Shell
+The private studio repeats the public canvas at working density: a slim top bar with the AK avatar, the lowercase `studio` wordmark, and quiet mono actions (`view site`, `sign out`), followed by a ruled tab row for overview, projects, and writing. Every boundary is a full-bleed hairline rather than a card edge. The bar and tabs use the same 72rem column and 1rem/2rem side padding as the public site, so the panel reads as another room in the same building, not a separate admin product. Sign-in is a single compact column: wordmark, display heading, one email field, and an azure primary action with a mono boundary note beneath.
+
+### Studio Ledger
+The overview is a ledger, not a dashboard of stat cards. A display title pairs with a lowercase mono status note (`private · date`); counts sit in a two-by-two ruled grid with mono labels and large Outfit numerals, separated by hairlines rather than tiles. Project rows use small rounded thumbnails, an Outfit title, and a mono `type · slug` caption, with azure reserved for the single `new project` action. Writing rows follow the same grammar with status and date in mono. Empty states are plain sentences with one inline action, never illustrated placeholders.
+
+### Studio Forms
+Create and edit screens open with a back link in mono, a display heading, and a one-line explanation of the save behavior. Fields are grouped under lowercase mono section labels (`details`, `cover image`, `publishing`, `body`) divided by full-bleed hairlines. Inputs reuse the public Input style; type and status selectors are compact radio or toggle rows with a checkerboarded selected state. Destructive actions stay as a quiet text control until the confirmation step.
+
+### Rich Editor
+The body editor is a rounded input-family container with a ruled toolbar at the top and a flat writing surface below. Toolbar buttons are 28px ghost targets with a 3.5-size icon, a foreground fill when active, and the same focus ring as other controls. The container carries the input border, fill, and a 2px 30% ring on focus-within. Headings, lists, quotes, code, and links inherit the reading voice; placeholder text uses the muted-foreground token. A mono word and character count sits opposite the `body` label.
+
 ## Do's and Don'ts
 
 ### Do:

@@ -44,3 +44,6 @@ next-env.d.ts
 /.impeccable/review/
 /.impeccable/mocks/
 /.impeccable/build/
+
+# supabase cli state
+/supabase/.temp/

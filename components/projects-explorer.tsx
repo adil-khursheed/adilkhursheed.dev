@@ -5,8 +5,16 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { primaryUrl, ProjectLinks, TechList } from "@/components/project-parts";
-import type { Project } from "@/lib/projects";
+import type { Project, ProjectType } from "@/lib/projects";
 import { cn } from "@/lib/utils";
+
+type TypeFilter = "all" | ProjectType;
+
+const typeFilters: { value: TypeFilter; label: string }[] = [
+  { value: "all", label: "all work" },
+  { value: "personal", label: "personal" },
+  { value: "freelance", label: "freelance" },
+];
 
 function ProjectRow({ project, index }: { project: Project; index: number }) {
   const flipped = index % 2 === 1;
@@ -35,11 +43,13 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
       </div>
 
       <div className={cn("md:col-span-5", flipped && "md:order-1")}>
-        {project.year ? (
-          <p className="font-mono text-[11px] text-foreground/65">
-            {project.year}
-          </p>
-        ) : null}
+        <p className="flex items-center gap-2 font-mono text-[11px] text-foreground/65">
+          {project.year ?? "—"}
+          <span aria-hidden="true" className="text-foreground/30">
+            /
+          </span>
+          {project.type}
+        </p>
         <h3 className="mt-3 text-2xl tracking-tight md:text-3xl">
           <Link
             href={href}
@@ -61,47 +71,86 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 }
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
+  const [type, setType] = useState<TypeFilter>("all");
+  const [active, setActive] = useState("All");
+
+  const ofType = useMemo(
+    () =>
+      type === "all"
+        ? projects
+        : projects.filter((project) => project.type === type),
+    [projects, type],
+  );
+
   const technologies = useMemo(() => {
     const set = new Set<string>();
-    for (const project of projects) {
+    for (const project of ofType) {
       for (const tech of project.tech_stack) set.add(tech);
     }
     return ["All", ...Array.from(set)];
-  }, [projects]);
-
-  const [active, setActive] = useState("All");
+  }, [ofType]);
 
   const visible = useMemo(
     () =>
       active === "All"
-        ? projects
-        : projects.filter((project) => project.tech_stack.includes(active)),
-    [active, projects],
+        ? ofType
+        : ofType.filter((project) => project.tech_stack.includes(active)),
+    [active, ofType],
   );
+
+  function chooseType(value: TypeFilter) {
+    setType(value);
+    setActive("All");
+  }
+
+  const filterButton = (selected: boolean) =>
+    cn(
+      "rounded-lg px-3 py-1.5 font-mono text-[11px] lowercase transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+      selected
+        ? "bg-foreground text-background"
+        : "text-foreground/65 ring-1 ring-border hover:text-foreground",
+    );
 
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex flex-wrap items-center gap-2">
-        {technologies.map((tech) => (
-          <button
-            key={tech}
-            type="button"
-            onClick={() => setActive(tech)}
-            aria-pressed={active === tech}
-            className={cn(
-              "rounded-lg px-3 py-1.5 font-mono text-[11px] lowercase transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
-              active === tech
-                ? "bg-foreground text-background"
-                : "text-foreground/65 ring-1 ring-border hover:text-foreground",
-            )}
-          >
-            {tech}
-          </button>
-        ))}
-        <span className="ml-auto font-mono text-[11px] text-foreground/65">
-          {String(visible.length).padStart(2, "0")} /{" "}
-          {String(projects.length).padStart(2, "0")}
-        </span>
+      <div className="flex flex-col gap-4 border-b border-border pb-5">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="mr-1 font-mono text-[10px] lowercase text-foreground/45">
+            type
+          </span>
+          {typeFilters.map((filter) => (
+            <button
+              key={filter.value}
+              type="button"
+              onClick={() => chooseType(filter.value)}
+              aria-pressed={type === filter.value}
+              className={filterButton(type === filter.value)}
+            >
+              {filter.label}
+            </button>
+          ))}
+          <span className="ml-auto font-mono text-[11px] text-foreground/65">
+            {String(visible.length).padStart(2, "0")} /{" "}
+            {String(ofType.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="mr-1 font-mono text-[10px] lowercase text-foreground/45">
+            stack
+          </span>
+          {technologies.map((tech) => (
+            <button
+              key={tech}
+              type="button"
+              onClick={() => setActive(tech)}
+              aria-pressed={active === tech}
+              className={filterButton(active === tech)}
+            >
+              {tech}
+            </button>
+          ))}
+        </div>
       </div>
 
       {visible.length ? (
@@ -112,8 +161,8 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
         </div>
       ) : (
         <p className="max-w-[52ch] text-base/8 text-foreground/60">
-          No projects match that filter yet. Choose another technology or view
-          everything.
+          No projects match those filters yet. Try all work or choose another
+          stack.
         </p>
       )}
     </div>
