@@ -1,12 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import React, { useRef, useSyncExternalStore } from "react";
 import { Button } from "./ui/button";
 import { flushSync } from "react-dom";
 import { Moon02Icon, SunIcon } from "@hugeicons/core-free-icons";
