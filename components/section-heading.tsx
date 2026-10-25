@@ -6,10 +6,12 @@ export function SectionHeading({
   title,
   meta,
   className,
+  as: Heading = "h2",
 }: {
   title: string;
   meta?: React.ReactNode;
   className?: string;
+  as?: "h1" | "h2";
 }) {
   return (
     <div
@@ -18,9 +20,9 @@ export function SectionHeading({
         className,
       )}
     >
-      <h2 className="text-3xl tracking-tight text-balance sm:text-4xl lg:text-5xl">
+      <Heading className="text-3xl tracking-tight text-balance sm:text-4xl lg:text-5xl">
         {title}
-      </h2>
+      </Heading>
       {meta ? (
         <p className="font-mono text-[11px] lowercase text-foreground/65">
           {meta}

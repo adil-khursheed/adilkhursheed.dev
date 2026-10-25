@@ -257,6 +257,9 @@ A full-bleed hairline over a compact row: mono copyright on one side, social lin
 ### Social Links
 Icon links (GitHub, LinkedIn, Instagram, X) rendered as 2rem ghost targets with a Mist hover. An optional labelled variant prints the platform name in lowercase mono next to each icon, used in About and the footer.
 
+### Social Card
+The Open Graph and Twitter card is a 1200×630 extension of the canvas, generated from `lib/og-image.tsx` and served from the stable `/social-image` route. A ruled header carries the portrait avatar, name, `portfolio / 2026`, and an azure-dotted `available for work` status; the body sets the name in two 92px Outfit lines over an azure rule, a short summary, and a lowercase mono stack line. A 330×340 portrait plate with a 28px radius and hairline ring sits opposite, captioned `portrait` and `01 / 01`. Hatched rails sit at both edges and a ruled footer prints the host and location. Fonts are the same Outfit and IBM Plex Mono files used on the site, self-hosted under `public/fonts`; both networks use the identical composition.
+
 ### Studio Shell
 The private studio repeats the public canvas at working density: a slim top bar with the AK avatar, the lowercase `studio` wordmark, and quiet mono actions (`view site`, `sign out`), followed by a ruled tab row for overview, projects, and writing. Every boundary is a full-bleed hairline rather than a card edge. The bar and tabs use the same 72rem column and 1rem/2rem side padding as the public site, so the panel reads as another room in the same building, not a separate admin product. Sign-in is a single compact column: wordmark, display heading, one email field, and an azure primary action with a mono boundary note beneath.
 

@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { JsonLd, siteGraph } from "@/lib/seo";
 
 export default function SiteLayout({
   children,
@@ -8,6 +9,7 @@ export default function SiteLayout({
 }>) {
   return (
     <>
+      <JsonLd data={siteGraph} />
       <a
         href="#content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:bg-foreground focus:px-3 focus:py-2 focus:text-xs focus:text-background"

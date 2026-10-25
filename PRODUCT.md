@@ -28,6 +28,8 @@ Confirmed today: Next.js 16 App Router with React 19, Tailwind CSS 4, shadcn/Bas
 
 A private, owner-only studio at an unguessable route now backs the work and writing: magic-link sign-in limited to `ADMIN_EMAIL` plus an admin role, a ruled overview ledger, project create/edit with Supabase Storage cover images, and a Tiptap blog composer with draft/published status. It is excluded from navigation, search metadata, and `robots.txt`; writes are gated by server-side owner checks and row-level security. Public blog pages are not yet implemented, and the Components route remains linked but unbuilt.
 
+Public pages ship with canonical URLs, indexable robots directives, a generated `sitemap.xml`, an Open Graph/Twitter card, and JSON-LD (Person, WebSite, ProfilePage, CollectionPage, ItemList, BreadcrumbList). `NEXT_PUBLIC_SITE_URL` overrides the default production origin used by canonical, sitemap, and social metadata.
+
 Explicitly undecided: the final set of projects and case-study detail, the public blog reading surface, component inventory, whether component code is copyable/downloadable, and whether comments or other reader features ship. No pricing, client roster, metrics, or testimonials are established.
 
 ## Loading and Data

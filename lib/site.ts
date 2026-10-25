@@ -1,11 +1,35 @@
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://adilkhursheed.vercel.app"
+).replace(/\/+$/, "");
+
 export const site = {
   name: "Adil Khursheed",
   role: "Full Stack Web Developer",
   location: "Based in India",
+  url: siteUrl,
+  twitter: "@AdilSayed2",
   summary:
     "I turn ideas into fast, scalable, real-world products with TypeScript, React, Next.js, Node.js, and MongoDB.",
   description:
-    "Portfolio of Adil Khursheed, a full stack web developer building fast, accessible products end to end.",
+    "Adil Khursheed is a full stack web developer in India building fast, accessible products end to end with TypeScript, React, Next.js, Node.js, and MongoDB.",
+  keywords: [
+    "Adil Khursheed",
+    "full stack web developer",
+    "web developer India",
+    "TypeScript developer",
+    "React developer",
+    "Next.js developer",
+    "Node.js developer",
+    "portfolio",
+  ],
+  technologies: [
+    "TypeScript",
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+  ],
 } as const;
 
 export type NavItem = {
