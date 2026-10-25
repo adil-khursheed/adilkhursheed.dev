@@ -21,7 +21,7 @@ export function Hero() {
     <section className="pt-10 md:pt-14">
       <div className="relative flex h-16 items-end px-2 font-mono text-[10px]/6 whitespace-pre text-foreground/20 max-sm:px-4 sm:h-24 sm:text-xs/6">
         <span className="hidden max-sm:inline">text-2xl </span>
-        <span className="hidden sm:max-md:inline">text-5xl </span>
+        <span className="hidden sm:max-lg:inline">text-5xl </span>
         <span className="hidden lg:max-xl:inline">text-6xl </span>
         <span className="hidden xl:inline">text-8xl </span>
         <span>tracking-tighter </span>
@@ -36,8 +36,8 @@ export function Hero() {
             transition={{ duration: reduce ? 0 : 0.4, ease }}
             className="relative z-10 px-2 text-2xl tracking-tighter text-balance max-lg:font-medium max-sm:px-4 sm:text-5xl lg:text-6xl xl:text-8xl"
           >
-            Hi, I&apos;m <span className="text-primary">Adil</span> — A Full Stack
-            Web Developer.
+            Hi, I&apos;m <span className="text-primary">Adil</span> — a full
+            stack web developer.
           </motion.h1>
         </div>
       </div>
@@ -52,11 +52,15 @@ export function Hero() {
           <motion.p
             initial={reduce ? false : { y: "100%" }}
             animate={{ y: 0 }}
-            transition={{ delay: reduce ? 0 : 0.3, duration: reduce ? 0 : 0.4, ease }}
+            transition={{
+              delay: reduce ? 0 : 0.3,
+              duration: reduce ? 0 : 0.4,
+              ease,
+            }}
             className="relative z-10 max-w-(--breakpoint-md) px-2 text-lg leading-9 max-lg:font-medium max-sm:px-4"
           >
-            I love turning ideas into fast, scalable, and real-world products. I
-            build modern web and mobile apps using{" "}
+            I turn ideas into fast, scalable, real-world products. I build
+            modern web and mobile apps with{" "}
             <RotatingText
               texts={technologies}
               auto={!reduce}
@@ -69,9 +73,9 @@ export function Hero() {
               splitLevelClassName="overflow-hidden"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               rotationInterval={3000}
-            />
-            . I enjoy solving problems end-to-end, integrating AI, optimizing
-            performance, and shipping features that actually make an impact.
+            />{" "}
+            while integrating AI, optimizing performance, and shipping features
+            that make an impact.
           </motion.p>
         </div>
       </div>
