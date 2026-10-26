@@ -2,6 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import {
+  ArrowLeft01Icon,
+  ArrowRight01Icon,
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import { cn } from "@/lib/utils";
@@ -42,21 +47,27 @@ export function WorkViewer() {
   const reduce = useReducedMotion();
   const shot = shots[active];
 
+  function step(direction: number) {
+    setActive((index) => (index + direction + shots.length) % shots.length);
+  }
+
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      setActive((index) => (index + 1) % shots.length);
+      step(1);
     } else if (event.key === "ArrowLeft") {
       event.preventDefault();
-      setActive((index) => (index - 1 + shots.length) % shots.length);
+      step(-1);
     }
   }
 
   return (
     <div className="flex flex-col gap-4">
       <div
+        id="leadlly-screen"
         role="group"
-        aria-label="Leadlly portal screens"
+        aria-roledescription="carousel"
+        aria-label="Leadlly student portal screens"
         onKeyDown={handleKeyDown}
         className="relative overflow-hidden rounded-lg bg-muted ring-1 ring-foreground/10"
       >
@@ -82,17 +93,56 @@ export function WorkViewer() {
         </div>
       </div>
 
-      <div className="flex items-start justify-between gap-6">
-        <p
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <div
+          className="min-h-[3.75rem] sm:min-h-10"
           aria-live="polite"
-          className="max-w-[52ch] font-mono text-[11px]/5 text-foreground/65"
+          aria-atomic="true"
         >
-          {shot.caption}
-        </p>
-        <span className="shrink-0 font-mono text-[11px] text-foreground/65">
-          {String(active + 1).padStart(2, "0")} /{" "}
-          {String(shots.length).padStart(2, "0")}
-        </span>
+          <AnimatePresence initial={false} mode="wait">
+            <motion.p
+              key={shot.id}
+              initial={reduce ? false : { opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? { opacity: 1 } : { opacity: 0, y: -4 }}
+              transition={{
+                duration: reduce ? 0 : 0.18,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="max-w-[52ch] font-mono text-[11px]/5 text-foreground/65"
+            >
+              {shot.caption}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+
+        <div className="flex shrink-0 items-center justify-between gap-4 sm:justify-end">
+          <span className="font-mono text-[11px] text-foreground/65">
+            {String(active + 1).padStart(2, "0")} /{" "}
+            {String(shots.length).padStart(2, "0")}
+          </span>
+
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => step(-1)}
+              aria-label="Show previous screen"
+              aria-controls="leadlly-screen"
+              className="inline-flex size-9 items-center justify-center rounded-md text-foreground/65 transition-colors outline-none hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40 active:translate-y-px sm:size-7"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} className="size-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => step(1)}
+              aria-label="Show next screen"
+              aria-controls="leadlly-screen"
+              className="inline-flex size-9 items-center justify-center rounded-md text-foreground/65 transition-colors outline-none hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40 active:translate-y-px sm:size-7"
+            >
+              <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5" />
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-4 gap-2">
@@ -104,22 +154,35 @@ export function WorkViewer() {
               type="button"
               onClick={() => setActive(index)}
               aria-pressed={isActive}
+              aria-controls="leadlly-screen"
               aria-label={`Show the ${item.label.toLowerCase()} screen`}
-              className={cn(
-                "relative overflow-hidden rounded-md ring-1 transition-all outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
-                isActive
-                  ? "ring-primary"
-                  : "opacity-70 ring-foreground/10 hover:opacity-100 hover:ring-foreground/25",
-              )}
+              className="group/thumb block rounded-md text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
             >
-              <span className="block aspect-[16/10]">
+              <span
+                className={cn(
+                  "relative block aspect-[16/10] overflow-hidden rounded-md ring-1 transition-all duration-300",
+                  isActive
+                    ? "ring-primary"
+                    : "opacity-70 ring-foreground/10 group-hover/thumb:opacity-100 group-hover/thumb:ring-foreground/25",
+                )}
+              >
                 <Image
                   src={item.src}
                   alt=""
                   fill
-                  sizes="20vw"
-                  className="object-cover object-top"
+                  sizes="(min-width: 1024px) 12vw, 22vw"
+                  className="object-cover object-top transition duration-700 ease-out group-hover/thumb:scale-[1.035]"
                 />
+              </span>
+              <span
+                className={cn(
+                  "mt-2 block font-mono text-[10px] lowercase transition-colors",
+                  isActive
+                    ? "text-foreground"
+                    : "text-foreground/65 group-hover/thumb:text-foreground",
+                )}
+              >
+                {item.label}
               </span>
             </button>
           );

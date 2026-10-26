@@ -23,12 +23,21 @@ export const site = {
     "portfolio",
   ],
   technologies: [
+    "HTML",
+    "CSS",
+    "Tailwind Css",
+    "Sass",
+    "JavaScript",
     "TypeScript",
     "React.js",
     "Next.js",
     "Node.js",
     "Express.js",
     "MongoDB",
+    "PostgreSql",
+    "Prisma ORM",
+    "Drizzle ORM",
+    "Redis",
   ],
 } as const;
 
@@ -39,7 +48,7 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "Work", href: "/#work", match: "section" },
+  { label: "Experience", href: "/#work", match: "section" },
   { label: "Projects", href: "/projects", match: "exact" },
   { label: "Contact", href: "/#contact", match: "section" },
 ];

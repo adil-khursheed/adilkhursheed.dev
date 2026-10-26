@@ -4,19 +4,48 @@ import { SectionHeading } from "@/components/section-heading";
 const groups = [
   {
     label: "languages",
-    items: ["HTML5", "CSS3", "JavaScript", "TypeScript"],
+    items: ["HTML5", "CSS3", "JavaScript", "TypeScript", "PHP"],
   },
   {
     label: "frameworks & libraries",
-    items: ["React", "Next.js", "Tailwind CSS", "Redux"],
+    items: [
+      "React",
+      "Next.js",
+      "Laravel",
+      "Tailwind CSS",
+      "Redux",
+      "Tanstack-Query",
+      "shadcn",
+      "Payload CMS",
+      "Clerk",
+      "Better Auth",
+      "Supabase",
+    ],
   },
   {
     label: "backend & data",
-    items: ["Node.js", "Express.js", "MongoDB"],
+    items: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "PostgreSql",
+      "Prisma ORM",
+      "Drizzle ORM",
+      "Redis",
+      "BullMQ",
+    ],
   },
   {
     label: "tooling",
-    items: ["Git", "GitHub", "Firebase"],
+    items: [
+      "Git",
+      "GitHub",
+      "Firebase",
+      "AWS",
+      "Vercel",
+      "OpenRouter",
+      "TurboRepo",
+    ],
   },
 ];
 

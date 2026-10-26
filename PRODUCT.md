@@ -42,7 +42,7 @@ Name: Adil Khursheed. Voice: first-person, direct, technically fluent, no corpor
 
 ## Evidence on Hand
 
-Portrait image at `public/portrait/adil-khursheed.png` (the original `public/adil-khursheed.jpg` is retained). Stack evidence: TypeScript, React.js, Next.js, Node.js, Express.js, MongoDB, plus the current repository. Role evidence: Frontend Developer at Leadlly (Apr 2024–present) with four portal screenshots under `public/experience`. Ten real projects with repository and live links under `public/projects`.
+Portrait image at `public/portrait/adil-khursheed.png` (the original `public/adil-khursheed.jpg` is retained). Stack evidence: TypeScript, React.js, Next.js, Node.js, Express.js, MongoDB, plus the current repository. Role evidence: Frontend Developer at Leadlly (Apr 2024–May 2026; past role) with four portal screenshots under `public/experience`. Ten real projects with repository and live links under `public/projects`.
 
 Absences future work must not fill by invention: no testimonials, client logos, benchmarks, performance metrics, user counts, awards, or employment history have been provided.
 
