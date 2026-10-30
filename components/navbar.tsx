@@ -35,7 +35,10 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-3 md:gap-5">
+        <nav
+          aria-label="Primary"
+          className="flex items-center gap-3 md:gap-5"
+        >
           <ThemeToggle />
 
           {navItems.map((item) => {

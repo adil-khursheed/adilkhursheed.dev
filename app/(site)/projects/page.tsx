@@ -5,7 +5,7 @@ import { ProjectsExplorer } from "@/components/projects-explorer";
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
 import { getProjects } from "@/lib/projects";
-import { JsonLd, socialImage } from "@/lib/seo";
+import { absoluteUrl, JsonLd, socialImage } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const revalidate = 60;
@@ -48,18 +48,27 @@ export default async function ProjectsPage() {
     description,
     inLanguage: "en",
     isPartOf: { "@id": `${site.url}/#website` },
+    about: { "@id": `${site.url}/#person` },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: projects.length,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
       itemListElement: projects.map((project, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        name: project.title,
-        description: project.summary,
-        url:
-          project.live_url ??
-          project.repo_url ??
-          `${site.url}/projects`,
+        item: {
+          "@type": "CreativeWork",
+          name: project.title,
+          description: project.summary,
+          url:
+            project.live_url ??
+            project.repo_url ??
+            `${site.url}/projects#${project.slug}`,
+          image: absoluteUrl(project.image_path),
+          keywords: project.tech_stack.join(", "),
+          genre: project.type,
+          creator: { "@id": `${site.url}/#person` },
+        },
       })),
     },
   };

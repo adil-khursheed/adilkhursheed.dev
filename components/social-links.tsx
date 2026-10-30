@@ -30,7 +30,7 @@ export function SocialLinks({
           <a
             href={social.href}
             target="_blank"
-            rel="noreferrer"
+            rel="me noopener noreferrer"
             className={cn(
               "inline-flex items-center gap-2 rounded-md px-2 py-1.5 font-mono text-[11px] text-foreground/60 lowercase transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40",
             )}

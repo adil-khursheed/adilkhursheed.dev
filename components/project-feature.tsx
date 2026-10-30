@@ -15,7 +15,7 @@ export function ProjectFeature({
   const href = primaryUrl(project);
 
   return (
-    <article className="group">
+    <article id={project.slug} className="group scroll-mt-24">
       <Link
         href={href}
         target="_blank"

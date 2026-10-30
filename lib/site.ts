@@ -6,6 +6,8 @@ export const site = {
   name: "Adil Khursheed",
   role: "Full Stack Web Developer",
   location: "Based in India",
+  country: "India",
+  countryCode: "IN",
   url: siteUrl,
   twitter: "@AdilSayed2",
   summary:

@@ -26,7 +26,13 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   category: "technology",
+  referrer: "origin-when-cross-origin",
   formatDetection: { email: false, address: false, telephone: false },
+  appleWebApp: {
+    capable: true,
+    title: site.name,
+    statusBarStyle: "default",
+  },
   openGraph: {
     title: `${site.name} | ${site.role}`,
     description: site.description,

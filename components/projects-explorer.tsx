@@ -21,7 +21,10 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   const href = primaryUrl(project);
 
   return (
-    <article className="group grid gap-6 md:grid-cols-12 md:items-center md:gap-10">
+    <article
+      id={project.slug}
+      className="group grid scroll-mt-24 gap-6 md:grid-cols-12 md:items-center md:gap-10"
+    >
       <div className={cn("md:col-span-7", flipped && "md:order-2")}>
         <Link
           href={href}
